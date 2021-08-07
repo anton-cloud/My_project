@@ -3,21 +3,10 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 // ====================================
-const postData = [
-  {
-    id: 1,
-    message: "Hello, how are you ?",
-    likesCount: 15,
-  },
-  {
-    id: 1,
-    message: "It's my first post...",
-    likesCount: 15,
-  },
-];
+//мвссив даних винесено в POST
 // ====================================
 
-const MyPosts = () => {
+const MyPosts = (postData) => {
   return (
     <div className={s.postWrap}>
       <h3 className={s.title}>My posts </h3>
