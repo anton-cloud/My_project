@@ -1,0 +1,9 @@
+.postWrap {
+  padding: 10px;
+}
+
+.title {
+  color: fuchsia;
+  font-weight: bold;
+  margin: 10px 0;
+}
