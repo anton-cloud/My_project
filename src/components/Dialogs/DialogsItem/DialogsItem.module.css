@@ -1,0 +1,18 @@
+/* .usersItem {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+} */
+.imageItem {
+  display: inline-block;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.itemName {
+  vertical-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}

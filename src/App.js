@@ -9,15 +9,25 @@ import { BrowserRouter, Route } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
-const App = () => {
+const App = ({ postData, dialogsData, messagesData, addPost }) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar dialogsData={dialogsData} />
         <div className="app-wrapper-content">
-          <Route path="/profile" component={Profile} />
-          <Route exact path="/dialogs" component={Dialogs} />
+          <Route
+            path="/profile"
+            render={() => <Profile postData={postData} addPost={addPost} />}
+          />
+          <Route
+            exact
+            path="/dialogs"
+            render={() => (
+              <Dialogs dialogsData={dialogsData} messagesData={messagesData} />
+            )}
+          />
+
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
         </div>

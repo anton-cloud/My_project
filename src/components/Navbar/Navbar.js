@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Navbar.module.css";
+// console.log(state.dialogsPage.dialogsData);
 
-const Navbar = () => {
+const Navbar = ({ dialogsData }) => {
+  console.log(dialogsData);
   return (
     <nav className={s.nav}>
       <ul className={s.list}>
@@ -27,6 +29,18 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
+
+      <div>
+        <p className={s.friendsTitle}>Friends</p>
+        <ul className={s.friendsList}>
+          {dialogsData.map((item) => (
+            <li className={s.friendsItem}>
+              <img className={s.friendsImg} src={item.photo} alt=""></img>
+              <p className={s.friendsName}>{item.name}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 };

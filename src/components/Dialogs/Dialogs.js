@@ -3,19 +3,16 @@ import s from "./Dialogs.module.css";
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
 // =========================
-let dialogsData = [
-  { id: 1, name: "Anton" },
-  { id: 2, name: "Sasha" },
-  { id: 3, name: "Bob" },
-];
 
-let messagesData = [
-  { id: 1, message: "message_1" },
-  { id: 2, message: "message_2" },
-  { id: 3, message: "message_3" },
-];
 // =========================
-const Dialogs = () => {
+const Dialogs = ({ dialogsData, messagesData }) => {
+  let textareaElem = React.createRef();
+
+  let onSend = () => {
+    let text = textareaElem.current.value;
+    alert(text);
+  };
+
   return (
     <div className={s.dialogs}>
       <div className="users">
@@ -27,6 +24,12 @@ const Dialogs = () => {
         <ul className="messages-list">
           <MessagesItem messagesData={messagesData} />
         </ul>
+      </div>
+      <div>
+        <div>
+          <textarea ref={textareaElem}> </textarea>
+          <button onClick={onSend}>Send</button>
+        </div>
       </div>
     </div>
   );
