@@ -4,31 +4,40 @@ import s from "./Navbar.module.css";
 // console.log(state.dialogsPage.dialogsData);
 
 const Navbar = ({ dialogsData }) => {
-  console.log(dialogsData);
   return (
-    <nav className={s.nav}>
-      <ul className={s.list}>
-        <li className={s.item}>
-          <NavLink className={s.link} to="/profile" activeClassName={s.active}>
-            Profile
-          </NavLink>
-        </li>
-        <li className={s.item}>
-          <NavLink className={s.link} to="/dialogs" activeClassName={s.active}>
-            Dialogs
-          </NavLink>
-        </li>
-        <li className={s.item}>
-          <NavLink className={s.link} to="/news" activeClassName={s.active}>
-            News
-          </NavLink>
-        </li>
-        <li className={s.item}>
-          <NavLink className={s.link} to="/music" activeClassName={s.active}>
-            Music
-          </NavLink>
-        </li>
-      </ul>
+    <div className={s.nav}>
+      <nav>
+        <ul className={s.list}>
+          <li className={s.item}>
+            <NavLink
+              className={s.link}
+              to="/profile"
+              activeClassName={s.active}
+            >
+              Profile
+            </NavLink>
+          </li>
+          <li className={s.item}>
+            <NavLink
+              className={s.link}
+              to="/dialogs"
+              activeClassName={s.active}
+            >
+              Dialogs
+            </NavLink>
+          </li>
+          <li className={s.item}>
+            <NavLink className={s.link} to="/news" activeClassName={s.active}>
+              News
+            </NavLink>
+          </li>
+          <li className={s.item}>
+            <NavLink className={s.link} to="/music" activeClassName={s.active}>
+              Music
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
       <div>
         <p className={s.friendsTitle}>Friends</p>
@@ -41,7 +50,7 @@ const Navbar = ({ dialogsData }) => {
           ))}
         </ul>
       </div>
-    </nav>
+    </div>
   );
 };
 

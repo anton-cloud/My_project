@@ -9,7 +9,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
-const App = ({ postData, dialogsData, messagesData, addPost }) => {
+const App = ({
+  profilePage,
+  dialogsData,
+  messagesData,
+  addPost,
+  updateNeePostPost,
+  updateMessage,
+  addMessage,
+}) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -18,13 +26,24 @@ const App = ({ postData, dialogsData, messagesData, addPost }) => {
         <div className="app-wrapper-content">
           <Route
             path="/profile"
-            render={() => <Profile postData={postData} addPost={addPost} />}
+            render={() => (
+              <Profile
+                profilePage={profilePage}
+                addPost={addPost}
+                updateNeePostPost={updateNeePostPost}
+              />
+            )}
           />
           <Route
             exact
             path="/dialogs"
             render={() => (
-              <Dialogs dialogsData={dialogsData} messagesData={messagesData} />
+              <Dialogs
+                dialogsData={dialogsData}
+                messagesData={messagesData}
+                updateMessage={updateMessage}
+                addMessage={addMessage}
+              />
             )}
           />
 

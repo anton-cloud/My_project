@@ -5,12 +5,17 @@ import MessagesItem from "./MessagesItem/MessagesItem";
 // =========================
 
 // =========================
-const Dialogs = ({ dialogsData, messagesData }) => {
+const Dialogs = ({ dialogsData, messagesData, updateMessage, addMessage }) => {
   let textareaElem = React.createRef();
 
-  let onSend = () => {
+  const onPostChange = () => {
     let text = textareaElem.current.value;
-    alert(text);
+    updateMessage(text);
+  };
+
+  let onSend = () => {
+    // let text = textareaElem.current.value;
+    addMessage();
   };
 
   return (
@@ -27,7 +32,11 @@ const Dialogs = ({ dialogsData, messagesData }) => {
       </div>
       <div>
         <div>
-          <textarea ref={textareaElem}> </textarea>
+          <textarea
+            onChange={onPostChange}
+            ref={textareaElem}
+            value={messagesData.newMessage}
+          ></textarea>
           <button onClick={onSend}>Send</button>
         </div>
       </div>

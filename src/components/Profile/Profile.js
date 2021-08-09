@@ -6,11 +6,15 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 // ======================================
 // ======================================
 
-const Profile = ({ postData, addPost }) => {
+const Profile = ({ profilePage, addPost, updateNeePostPost }) => {
   return (
     <>
       <ProfileInfo />
-      <MyPosts postData={postData} addPost={addPost} />
+      <MyPosts
+        profilePage={profilePage}
+        addPost={addPost}
+        updateNeePostPost={updateNeePostPost}
+      />
     </>
   );
 };

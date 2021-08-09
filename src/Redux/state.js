@@ -1,3 +1,7 @@
+let renderEntireTree = () => {
+  console.log("state changed");
+};
+
 let state = {
   profilePage: {
     postData: [
@@ -12,6 +16,7 @@ let state = {
         likesCount: 15,
       },
     ],
+    newPostText: "",
   },
 
   dialogsPage: {
@@ -40,16 +45,48 @@ let state = {
       { id: 2, message: "message_2" },
       { id: 3, message: "message_3" },
     ],
+    newMessage: "",
   },
 };
+// ======================
+window.state = state;
+// ======================
 
-export let addPost = (postMessage) => {
+// *************DIALOGS ===> MESSAGE*************
+export const updateMessage = (text) => {
+  state.dialogsPage.messagesData.newMessage = text;
+  renderEntireTree(state);
+};
+
+export const addMessage = () => {
+  let newMessage = {
+    id: 4,
+    message: state.dialogsPage.messagesData.newMessage,
+  };
+  state.dialogsPage.messagesData.push(newMessage);
+  state.dialogsPage.messagesData.newMessage = "";
+  renderEntireTree(state);
+};
+// **************************
+
+export const addPost = () => {
   let newPost = {
     id: 3,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likesCount: 0,
   };
   state.profilePage.postData.push(newPost);
+  state.profilePage.newPostText = "";
+  renderEntireTree(state);
+};
+
+export const updateNeePostPost = (newText) => {
+  state.profilePage.newPostText = newText;
+  renderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
 };
 
 export default state;

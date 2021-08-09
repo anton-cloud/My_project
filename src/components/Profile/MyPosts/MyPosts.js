@@ -6,14 +6,14 @@ import Post from "./Post/Post";
 //мвссив даних винесено в index.html
 // ====================================
 
-const MyPosts = ({ postData, addPost }) => {
-  debugger;
+const MyPosts = ({ profilePage, addPost, updateNeePostPost }) => {
   let newPostElement = React.createRef();
   let addMyPost = () => {
-    debugger;
+    addPost();
+  };
+  let onPostChange = () => {
     let text = newPostElement.current.value;
-    addPost(text);
-    newPostElement.current.value = "";
+    updateNeePostPost(text);
   };
 
   return (
@@ -21,13 +21,17 @@ const MyPosts = ({ postData, addPost }) => {
       <h3 className={s.title}>My posts </h3>
       <div className={s.item}>
         <div>
-          <textarea ref={newPostElement}> </textarea>
+          <textarea
+            onChange={onPostChange}
+            ref={newPostElement}
+            value={profilePage.newPostText}
+          />
         </div>
         <div>
           <button onClick={addMyPost}>add</button>
         </div>
       </div>
-      <Post postData={postData} />
+      <Post postData={profilePage.postData} />
     </div>
   );
 };
