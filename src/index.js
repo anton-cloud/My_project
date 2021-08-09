@@ -2,31 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import state, { subscribe } from "./Redux/state";
-import {
-  addPost,
-  updateNeePostPost,
-  updateMessage,
-  addMessage,
-} from "./Redux/state";
+import store from "./Redux/state";
 
-let renderEntireTree = (state) => {
+let renderEntireTree = () => {
   ReactDOM.render(
     <React.StrictMode>
       <App
-        profilePage={state.profilePage}
-        dialogsData={state.dialogsPage.dialogsData}
-        messagesData={state.dialogsPage.messagesData}
-        addPost={addPost}
-        updateNeePostPost={updateNeePostPost}
-        updateMessage={updateMessage}
-        addMessage={addMessage}
+        profilePage={store.getState().profilePage}
+        dialogsData={store.getState().dialogsPage.dialogsData}
+        messagesData={store.getState().dialogsPage.messagesData}
+        // addPost={store.addPost.bind(store)}
+        // updateNeePostPost={store.updateNeePostPost.bind(store)}
+        dispatch={store.dispatch.bind(store)}
+        updateMessage={store.updateMessage.bind(store)}
+        addMessage={store.addMessage.bind(store)}
       />
     </React.StrictMode>,
     document.getElementById("root")
   );
 };
 
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);

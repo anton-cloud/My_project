@@ -13,10 +13,11 @@ const App = ({
   profilePage,
   dialogsData,
   messagesData,
-  addPost,
-  updateNeePostPost,
+  // addPost,
+  // updateNeePostPost,
   updateMessage,
   addMessage,
+  dispatch,
 }) => {
   return (
     <BrowserRouter>
@@ -29,8 +30,9 @@ const App = ({
             render={() => (
               <Profile
                 profilePage={profilePage}
-                addPost={addPost}
-                updateNeePostPost={updateNeePostPost}
+                dispatch={dispatch}
+                // addPost={addPost}
+                // updateNeePostPost={updateNeePostPost}
               />
             )}
           />

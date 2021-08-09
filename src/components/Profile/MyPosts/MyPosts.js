@@ -1,19 +1,16 @@
 import React from "react";
+import { addPostActionCreate, updatePost } from "../../../Redux/state";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-// ====================================
-//мвссив даних винесено в index.html
-// ====================================
-
-const MyPosts = ({ profilePage, addPost, updateNeePostPost }) => {
+const MyPosts = ({ profilePage, addPost, updateNeePostPost, dispatch }) => {
   let newPostElement = React.createRef();
   let addMyPost = () => {
-    addPost();
+    dispatch(addPostActionCreate());
   };
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    updateNeePostPost(text);
+    dispatch(updatePost(text));
   };
 
   return (
