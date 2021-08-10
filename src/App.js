@@ -15,8 +15,8 @@ const App = ({
   messagesData,
   // addPost,
   // updateNeePostPost,
-  updateMessage,
-  addMessage,
+  // updateMessage,
+  // addMessage,
   dispatch,
 }) => {
   return (
@@ -43,8 +43,9 @@ const App = ({
               <Dialogs
                 dialogsData={dialogsData}
                 messagesData={messagesData}
-                updateMessage={updateMessage}
-                addMessage={addMessage}
+                dispatch={dispatch}
+                // updateMessage={updateMessage}
+                // addMessage={addMessage}
               />
             )}
           />

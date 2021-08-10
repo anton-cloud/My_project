@@ -1,5 +1,8 @@
 import React from "react";
-import { addPostActionCreate, updatePost } from "../../../Redux/state";
+import {
+  addPostActionCreate,
+  updatePostActionCreate,
+} from "../../../Redux/ptofile-reducer";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
@@ -10,7 +13,7 @@ const MyPosts = ({ profilePage, addPost, updateNeePostPost, dispatch }) => {
   };
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    dispatch(updatePost(text));
+    dispatch(updatePostActionCreate(text));
   };
 
   return (

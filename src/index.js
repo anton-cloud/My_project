@@ -14,8 +14,8 @@ let renderEntireTree = () => {
         // addPost={store.addPost.bind(store)}
         // updateNeePostPost={store.updateNeePostPost.bind(store)}
         dispatch={store.dispatch.bind(store)}
-        updateMessage={store.updateMessage.bind(store)}
-        addMessage={store.addMessage.bind(store)}
+        // updateMessage={store.updateMessage.bind(store)}
+        // addMessage={store.addMessage.bind(store)}
       />
     </React.StrictMode>,
     document.getElementById("root")

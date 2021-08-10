@@ -1,21 +1,33 @@
 import React from "react";
+import {
+  addMessageActionCreate,
+  updateMessageActionCreate,
+} from "../../Redux/dialogs-reducer";
 import s from "./Dialogs.module.css";
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
 // =========================
 
 // =========================
-const Dialogs = ({ dialogsData, messagesData, updateMessage, addMessage }) => {
+const Dialogs = ({
+  dialogsData,
+  messagesData,
+  updateMessage,
+  addMessage,
+  dispatch,
+}) => {
   let textareaElem = React.createRef();
 
-  const onPostChange = () => {
-    let text = textareaElem.current.value;
-    updateMessage(text);
+  const onPostChange = (e) => {
+    let text = e.target.value;
+    // updateMessage(text);
+    dispatch(updateMessageActionCreate(text));
   };
 
   let onSend = () => {
     // let text = textareaElem.current.value;
-    addMessage();
+    // addMessage();
+    dispatch(addMessageActionCreate());
   };
 
   return (
@@ -34,7 +46,7 @@ const Dialogs = ({ dialogsData, messagesData, updateMessage, addMessage }) => {
         <div>
           <textarea
             onChange={onPostChange}
-            ref={textareaElem}
+            // ref={textareaElem}
             value={messagesData.newMessage}
           ></textarea>
           <button onClick={onSend}>Send</button>

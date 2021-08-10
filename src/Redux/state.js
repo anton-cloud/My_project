@@ -1,5 +1,10 @@
+import dialogsReducer from "./dialogs-reducer";
+import profileleReducer from "./ptofile-reducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_POST = "UPDATE-POST";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_MESSAGE = "UPDATE-MESSAGE";
 
 const store = {
   _state: {
@@ -55,10 +60,10 @@ const store = {
     this._state.dialogsPage.messagesData.newMessage = text;
     this._calliSubscriber(this._state);
   },
-  // updateNeePostPost(newText) {
-  //   this._state.profilePage.newPostText = newText;
-  //   this._calliSubscriber(this._state);
-  // },
+  updateNeePostPost(newText) {
+    this._state.profilePage.newPostText = newText;
+    this._calliSubscriber(this._state);
+  },
   addMessage() {
     let newMessage = {
       id: 4,
@@ -68,16 +73,16 @@ const store = {
     this._state.dialogsPage.messagesData.newMessage = "";
     this._calliSubscriber(this._state);
   },
-  // addPost() {
-  //   let newPost = {
-  //     id: 3,
-  //     message: this._state.profilePage.newPostText,
-  //     likesCount: 0,
-  //   };
-  //   this._state.profilePage.postData.push(newPost);
-  //   this._state.profilePage.newPostText = "";
-  //   this._calliSubscriber(this._state);
-  // },
+  addPost() {
+    let newPost = {
+      id: 3,
+      message: this._state.profilePage.newPostText,
+      likesCount: 0,
+    };
+    this._state.profilePage.postData.push(newPost);
+    this._state.profilePage.newPostText = "";
+    this._calliSubscriber(this._state);
+  },
   subscribe(observer) {
     this._calliSubscriber = observer;
   },
@@ -86,30 +91,45 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 3,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-      };
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this._calliSubscriber(this._state);
-    } else if (action.type === UPDATE_POST) {
-      this._state.profilePage.newPostText = action.newText;
-      this._calliSubscriber(this._state);
-    }
-  },
-};
 
-export const addPostActionCreate = () => ({
-  type: ADD_POST,
-});
+    this._state.profilePage = profileleReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-export const updatePost = (text) => ({
-  type: UPDATE_POST,
-  newText: text,
-});
+
+    this._calliSubscriber(this._state);
+  }
+}
+
+// =====================================
+  //   if (action.type === ADD_POST) {
+  //     let newPost = {
+  //       id: 3,
+  //       message: this._state.profilePage.newPostText,
+  //       likesCount: 0,
+  //     };
+  //     this._state.profilePage.postData.push(newPost);
+  //     this._state.profilePage.newPostText = "";
+  //     this._calliSubscriber(this._state);
+  //   } else if (action.type === UPDATE_POST) {
+  //     this._state.profilePage.newPostText = action.newText;
+  //     this._calliSubscriber(this._state);
+  //   } else if (action.type === ADD_MESSAGE) {
+  //     let newMessage = {
+  //       id: 4,
+  //       message: this._state.dialogsPage.messagesData.newMessage,
+  //     };
+  //     this._state.dialogsPage.messagesData.push(newMessage);
+  //     this._state.dialogsPage.messagesData.newMessage = "";
+  //     this._calliSubscriber(this._state);
+  //   } else if (action.type === UPDATE_MESSAGE) {
+  //     this._state.dialogsPage.messagesData.newMessage = action.newText;
+  //     this._calliSubscriber(this._state);
+  //   }
+  // },
+
+
+
+
 
 window.state = store;
 
